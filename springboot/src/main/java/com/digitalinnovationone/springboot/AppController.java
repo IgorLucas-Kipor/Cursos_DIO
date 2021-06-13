@@ -11,9 +11,17 @@ public class AppController {
 	@Value("${app.message}")
 	private String appMessage;
 	
+	@Value("${ENV_DB_URL:NENHUMA}")
+	private String dbEnvironmentVariable;
+	
 	@GetMapping("/")
 	public String getAppMessage() {
 		return appMessage;
+	}
+	
+	@GetMapping("/envVariable")
+	public String getEnvironmentVariable() {
+		return "A seguinte variável de ambiente foi acessada: " + dbEnvironmentVariable;
 	}
 	
 
